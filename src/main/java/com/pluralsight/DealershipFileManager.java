@@ -1,11 +1,9 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 public class DealershipFileManager {
-    public void getDealership() throws FileNotFoundException {
+    public Dealership getDealership() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("dealership.csv"));
 
@@ -35,6 +33,31 @@ public class DealershipFileManager {
         }catch (Exception ex){
             System.out.println("Something went wrong");
         }
+        return new Dealership(getDealership().getName(), getDealership().getAddress(), getDealership().getPhone());
     }
+
+    public void saveDealerShip(Dealership dealership){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv"));
+            writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
+
+            writer.newLine();
+
+            // vehicle information
+            for (Vehicle vehicle : dealership.getInventory()) {
+
+                writer.write(vehicle.getVin() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|" + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" + vehicle.getOdometer() + "|" + vehicle.getPrice());
+
+                writer.newLine();
+            }
+
+            writer.close();
+
+        } catch (Exception ex) {
+
+            System.out.println("Something went wrong");
+        }
+    }
+
 
 }

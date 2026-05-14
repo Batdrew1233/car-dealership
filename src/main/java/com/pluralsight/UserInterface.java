@@ -14,7 +14,7 @@ public class UserInterface {
         DealershipFileManager manager = new DealershipFileManager();
 
         try {
-            manager.getDealership();
+           dealership = manager.getDealership();
         } catch (Exception ex) {
             System.out.println("Something went wrong");
         }
@@ -36,14 +36,15 @@ public class UserInterface {
             System.out.println("8. Add vehicles");
             System.out.println("9. Remove vehicles");
             System.out.println("99. Quit");
-            System.out.println("Enter your choice: ");
-            choice = scanner.nextInt();
+            System.out.print("Enter your choice: ");
 
             if (!scanner.hasNextInt()){
                 System.out.println("Invalid option, please try again.");
                 scanner.nextLine();
                 continue;
             }
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice){
                 case 1 -> processGetByPriceRequest();
@@ -147,7 +148,7 @@ public class UserInterface {
         System.out.print("Enter vehicle type: ");
         String vehicleType = scanner.nextLine();
 
-        List<Vehicle> vehicles = dealership.getVehicleByType(vehicleType);
+        List<Vehicle> vehicles = dealership.getVehiclesByType(vehicleType);
         displayVehicles(vehicles);
 
     }
