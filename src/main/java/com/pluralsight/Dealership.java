@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dealership {
     private String name;
@@ -20,7 +21,7 @@ public class Dealership {
         return null;
     }
 
-    public Vehicle getVehiclesByPrice(String make, String model){
+    public Vehicle getVehiclesByMakeModel(String make, String model){
         return null;
     }
 
@@ -36,12 +37,19 @@ public class Dealership {
         return null;
     }
 
-    public Vehicle getVehicleByType(String vehicleType){
-        return null;
+    public List<Vehicle> getVehicleByType(String vehicleType){
+        List<Vehicle> matches = new ArrayList<>();
+
+        for(Vehicle vehicle : inventory){
+            if (vehicle.contains(vehicleType)){
+                matches.add(vehicle);
+            }
+        }
+        return matches;
     }
 
-    public Vehicle getAllVehicles(){
-        return null;
+    public List<Vehicle> getAllVehicles(){
+        return inventory;
     }
 
     public void addVehicle(Vehicle vehicle){
@@ -49,6 +57,7 @@ public class Dealership {
     }
 
     public void removeVehicle(Vehicle vehicle){
+        inventory.remove(vehicle);
 
     }
     public String getName() {
