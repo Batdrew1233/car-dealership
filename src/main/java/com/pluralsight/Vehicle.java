@@ -1,6 +1,8 @@
 package com.pluralsight;
 
-public class Vehicle {
+import java.util.List;
+
+public class Vehicle implements List<Vehicle> {
     private int vin;
     private int year;
     private String make;

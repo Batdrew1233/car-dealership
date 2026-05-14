@@ -28,7 +28,7 @@ public class DealershipFileManager {
                 int odometer = Integer.parseInt(parts[6].trim());
                 double price = Double.parseDouble(parts[7].trim());
 
-                dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+                dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer,price));
 
 
             }
