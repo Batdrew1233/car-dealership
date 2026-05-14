@@ -30,13 +30,16 @@ public class DealershipFileManager {
 
 
             }
+            bufferedReader.close();
+            return dealership;
+
         }catch (Exception ex){
             System.out.println("Something went wrong");
         }
-        return new Dealership(getDealership().getName(), getDealership().getAddress(), getDealership().getPhone());
+        return null;
     }
 
-    public void saveDealerShip(Dealership dealership){
+    public void saveDealership(Dealership dealership){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv"));
             writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
@@ -58,6 +61,7 @@ public class DealershipFileManager {
             System.out.println("Something went wrong");
         }
     }
+
 
 
 }

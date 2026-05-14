@@ -86,4 +86,10 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-8d | %-4d | %-10s | %-10s | %-8s | %-8s | %-8d | $%,10.2f", vin, year, make, model, vehicleType, color, odometer, price);
+    }
 }
+
